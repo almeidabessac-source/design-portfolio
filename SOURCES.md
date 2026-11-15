@@ -31,3 +31,8 @@ Water covers 71% of Earth's surface: [NASA Ocean Worlds](https://www.nasa.gov/sp
 [NASA: Asteroid's orbit and shape changed after DART impact](https://www.nasa.gov/centers-and-facilities/jpl/nasa-study-asteroids-orbit-shape-changed-after-dart-impact/), March 19, 2024. Dimorphos's orbital period around Didymos was shortened by approximately 33 minutes. The thumbnail's curve is decorative, not a measured orbit.
 
 Source images in the Before panels retain their original visual content; web versions are compressed for loading. Final compositions are independent AI-assisted design interpretations and not scientific source images. No agency commission or endorsement is implied. Source imagery retains its respective rights and terms.
+
+
+## Fictional presenter thumbnail studies — buttons 1–6
+
+Created November 15, 2026 from user-supplied visual layout references. Six new fictional adult models and hypothetical before/after compositions generated with AI; no original reference person, source artwork, watermark or outer presentation interface is used as an output asset. The financial and watch-time values are illustrative design copy, not measured client results or income claims. The two original science studies remain at buttons 7 and 8 with the credits above.

@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#050505">
   <meta property="og:title" content="Christian Bessa — Design Portfolio">
   <meta property="og:description" content="Posts. Carousels. Thumbnails. See the before and after.">
-  <meta property="og:image" content="thumbnail-02.png">
-  <link rel="stylesheet" href="style.css?v=2"><script src="script.js?v=2" defer></script>
+  <meta property="og:image" content="thumb-study-02-after.png">
+  <link rel="stylesheet" href="style.css?v=3"><script src="script.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip" href="#work">Skip to portfolio</a>
@@ -45,15 +45,11 @@
       <div class="project-bottom"><p>Hook → evidence → context → takeaway. One idea per slide, with a consistent visual rhythm.</p></div>
       </article></section>
       <section id="thumbnails" aria-labelledby="thumbnails-title"><div class="section-heading"><h2 id="thumbnails-title">Thumbnails</h2></div>
-        <article class="project"><div class="comparison">
-          <figure><figcaption><strong>After</strong></figcaption><a class="art landscape-art" href="thumbnail-01.png" data-lightbox><img src="thumbnail-01.webp" alt="YouTube thumbnail: We moved an asteroid, 33 minutes shorter, with Dimorphos" width="1280" height="720" loading="lazy"></a></figure>
-          <figure><figcaption><strong>Before</strong></figcaption><a class="art landscape-art source" href="source-dimorphos.webp" data-lightbox><img src="source-dimorphos.webp" alt="Original NASA DART close-up of asteroid Dimorphos before impact" loading="lazy"></a></figure>
-        </div>
-        </article>
-        <article class="project"><div class="comparison">
-          <figure><figcaption><strong>After</strong></figcaption><a class="art landscape-art" href="thumbnail-02.png" data-lightbox><img src="thumbnail-02.webp" alt="YouTube thumbnail contrasting Hubble and Webb views of the Pillars of Creation" width="1280" height="720" loading="lazy"></a></figure>
-          <figure><figcaption><strong>Before</strong></figcaption><a class="art landscape-art source" href="source-pillars-comparison.webp" data-lightbox><img src="source-pillars-comparison.webp" alt="Original NASA comparison: Hubble visible light and Webb near-infrared Pillars of Creation" loading="lazy"></a></figure>
-        </div>
+        <article class="project" id="thumbnail-project"><div class="comparison" id="thumbnail-comparison" aria-label="Thumbnail 1: Digital choices, after and before">
+          <figure><figcaption><strong>After</strong></figcaption><a class="art landscape-art" id="thumbnail-after-art" href="thumb-study-01-after.png" data-lightbox><img id="thumbnail-after" src="thumb-study-01-after.webp" alt="Digital choices: fictional presenter with cyan and red lighting, icon cards and a dashed connection" width="1280" height="720" loading="lazy"></a></figure>
+          <figure><figcaption><strong>Before</strong></figcaption><a class="art landscape-art thumbnail-before" id="thumbnail-before-art" href="thumb-study-01-before.png" data-lightbox><img id="thumbnail-before" src="thumb-study-01-before.webp" alt="Hypothetical source portrait of the same fictional presenter on white" width="1280" height="720" loading="lazy"></a></figure>
+        </div><div class="thumbnail-controls" role="group" aria-label="Thumbnail pair navigation"><button id="prev-thumbnail" aria-label="Previous thumbnail pair">←</button><div class="thumbnail-numbers"><button data-thumbnail="0" aria-label="Show thumbnail 1, before and after" aria-current="true">1</button><button data-thumbnail="1" aria-label="Show thumbnail 2, before and after">2</button><button data-thumbnail="2" aria-label="Show thumbnail 3, before and after">3</button><button data-thumbnail="3" aria-label="Show thumbnail 4, before and after">4</button><button data-thumbnail="4" aria-label="Show thumbnail 5, before and after">5</button><button data-thumbnail="5" aria-label="Show thumbnail 6, before and after">6</button><button data-thumbnail="6" aria-label="Show thumbnail 7, before and after">7</button><button data-thumbnail="7" aria-label="Show thumbnail 8, before and after">8</button></div><button id="next-thumbnail" aria-label="Next thumbnail pair">→</button></div>
+        <div class="thumbnail-caption"><p id="thumbnail-title">01 / 08 — Digital choices</p><p id="thumbnail-note">Personal concept study. Fictional model and hypothetical before/after.</p></div><p class="sr-only" id="thumbnail-status" aria-live="polite"></p>
         </article>
       </section>
       <section id="contact" class="contact" aria-labelledby="contact-title"><h2 id="contact-title">Let’s work together.</h2><div class="contact-actions"><button class="primary" id="copy-discord"><span id="discord-label">Copy Discord</span><span aria-hidden="true">↗</span></button><a class="primary secondary" href="https://www.reddit.com/user/EspadigoAlmeidaBessa/" target="_blank" rel="noopener">Contact on Reddit <span aria-hidden="true">↗</span></a></div><p class="sr-only" id="copy-status" aria-live="polite"></p></section>
