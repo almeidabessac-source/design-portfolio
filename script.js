@@ -26,7 +26,7 @@ const thumbnailStudies = [
   ['Pricing strategy','Fictional presenter with blue and red numbered circles, $10 and $10K pricing'],
   ['From $1K to $1M','Fictional presenter counting on his fingers, income labels and a rising dashed arrow'],
   ['Watch time','Split-color fictional presenter with illustrative 6.3 and 4.8K watch-time cards']
-].map(([title,alt],i)=>{const stem='thumb-study-'+String(i+1).padStart(2,'0');return {title,after:stem+'-after.webp',before:stem+'-before.webp',afterFull:stem+'-after.png',beforeFull:stem+'-before.png',alt,beforeAlt:'Hypothetical source portrait of the same fictional model on white',note:'Personal concept study. Fictional model and hypothetical before/after.'};});
+].map(([title,alt],i)=>{const stem='thumb-study-'+String(i+1).padStart(2,'0');return {title,after:stem+'-after.webp',before:stem+'-before.webp',afterFull:stem+'-after.png',beforeFull:stem+'-before.png',alt,beforeAlt:'Hypothetical source portrait of the same fictional model on white'};});
 thumbnailStudies.push(
   {title:'We moved an asteroid',after:'thumbnail-01.webp',before:'source-dimorphos.webp',afterFull:'thumbnail-01.png',beforeFull:'source-dimorphos.webp',alt:'YouTube thumbnail: We moved an asteroid, 33 minutes shorter, with Dimorphos',beforeAlt:'Original NASA DART close-up of asteroid Dimorphos before impact',note:'Design study. Before: NASA / Johns Hopkins APL source image.'},
   {title:'Hubble meets Webb',after:'thumbnail-02.webp',before:'source-pillars-comparison.webp',afterFull:'thumbnail-02.png',beforeFull:'source-pillars-comparison.webp',alt:'YouTube thumbnail contrasting Hubble and Webb views of the Pillars of Creation',beforeAlt:'Original NASA comparison: Hubble visible light and Webb near-infrared Pillars of Creation',note:'Design study. Before: NASA, ESA, CSA and STScI source images.'}
@@ -45,8 +45,6 @@ async function showThumbnail(next){
   document.querySelector('#thumbnail-after-art').href=item.afterFull;
   document.querySelector('#thumbnail-before-art').href=item.beforeFull;
   document.querySelector('#thumbnail-before-art').classList.toggle('source',selected>=6);
-  document.querySelector('#thumbnail-title').textContent=String(selected+1).padStart(2,'0')+' / 08 — '+item.title;
-  document.querySelector('#thumbnail-note').textContent=item.note;
   document.querySelector('#thumbnail-comparison').setAttribute('aria-label','Thumbnail '+(selected+1)+': '+item.title+', after and before');
   document.querySelectorAll('[data-thumbnail]').forEach((button,i)=>{if(i===selected)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
   thumbnailStatus.textContent='Thumbnail '+(selected+1)+' of 8: '+item.title+'. Both before and after are displayed.';
@@ -55,3 +53,41 @@ document.querySelectorAll('[data-thumbnail]').forEach(button=>button.addEventLis
 document.querySelector('#prev-thumbnail').addEventListener('click',()=>showThumbnail(thumbnailIndex-1));
 document.querySelector('#next-thumbnail').addEventListener('click',()=>showThumbnail(thumbnailIndex+1));
 document.querySelector('.thumbnail-controls').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showThumbnail(thumbnailIndex+(event.key==='ArrowRight'?1:-1));}});
+
+// Category controls expose one portfolio section at a time.
+const categoryButtons=[...document.querySelectorAll('[data-category]')];
+const categoryNames=categoryButtons.map(button=>button.dataset.category);
+function showCategory(id,focus=false){
+  if(!categoryNames.includes(id))return;
+  categoryButtons.forEach(button=>{const active=button.dataset.category===id;button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;if(active&&focus)button.focus();});
+  categoryNames.forEach(name=>{document.getElementById(name).hidden=name!==id;});
+}
+categoryButtons.forEach(button=>button.addEventListener('click',()=>{showCategory(button.dataset.category);history.replaceState(null,'','#'+button.dataset.category);}));
+document.querySelector('.portfolio-tabs').addEventListener('keydown',event=>{
+  const current=categoryButtons.indexOf(document.activeElement);if(current<0)return;
+  let next=current;
+  if(event.key==='ArrowRight')next=(current+1)%categoryNames.length;
+  else if(event.key==='ArrowLeft')next=(current+categoryNames.length-1)%categoryNames.length;
+  else if(event.key==='Home')next=0;
+  else if(event.key==='End')next=categoryNames.length-1;
+  else return;
+  event.preventDefault();showCategory(categoryNames[next],true);history.replaceState(null,'','#'+categoryNames[next]);
+});
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',event=>{
+  const id=link.hash.slice(1);if(!categoryNames.includes(id))return;
+  event.preventDefault();showCategory(id);history.pushState(null,'','#'+id);document.getElementById('work').scrollIntoView({block:'start'});
+}));
+function categoryFromHash(){const id=location.hash.slice(1);if(categoryNames.includes(id))showCategory(id);}
+window.addEventListener('hashchange',categoryFromHash);categoryFromHash();
+let postIndex=0;
+const postPairs=[...document.querySelectorAll('[data-post-pair]')];
+function showPost(next){
+  postIndex=(next+postPairs.length)%postPairs.length;
+  postPairs.forEach((pair,i)=>{pair.hidden=i!==postIndex;});
+  document.querySelectorAll('[data-post]').forEach((button,i)=>{if(i===postIndex)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
+  document.querySelector('#post-status').textContent='Post '+(postIndex+1)+' of '+postPairs.length+'. Both before and after are displayed.';
+}
+document.querySelectorAll('[data-post]').forEach(button=>button.addEventListener('click',()=>showPost(Number(button.dataset.post))));
+document.querySelector('#prev-post').addEventListener('click',()=>showPost(postIndex-1));
+document.querySelector('#next-post').addEventListener('click',()=>showPost(postIndex+1));
+document.querySelector('.post-controls').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPost(postIndex+(event.key==='ArrowRight'?1:-1));}});

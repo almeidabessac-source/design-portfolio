@@ -16,3 +16,5 @@ Source facts were checked November 15, 2026. The NOAA mapping figure is explicit
 
 Thumbnail buttons 1–8 select the After and Before images together. Buttons 1–6 use six different fictional models generated with AI. Their before images and financial / watch-time figures are hypothetical design materials, not client results. Buttons 7 and 8 preserve the original science thumbnails. Updated November 15, 2026.
 
+
+Portfolio navigation: three category tabs (Thumbnails, Posts, Carousels), with separate numbered controls for 8 thumbnail pairs, 3 post pairs and 5 carousel slides. Thumbnail captions and project-description text are omitted from the visual gallery.
